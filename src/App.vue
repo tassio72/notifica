@@ -3,12 +3,16 @@
     <Menu/>  
     <router-view/>
     
+    
+    
   </div>
 </template>
 
 <script>
 
 import Menu from './components/Menu.vue'
+import Consumer from './components/consumer/Consumer.vue'
+
 export default {
   components: {
     Menu

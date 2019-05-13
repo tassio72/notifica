@@ -22,4 +22,6 @@ export default {
         width: 30%;  
         margin: 10px auto;
         }
+
+
 </style>
