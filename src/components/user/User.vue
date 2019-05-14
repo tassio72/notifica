@@ -28,6 +28,10 @@
 
 			<b-button @click="notificarConsumer" variant="primary" class="mt-3" > Notificar! </b-button>
 			
+            <b-alert show dismissible v-for="mensagem in mensagens"
+                :key='mensagem.texto'
+                :variant="mensagem.tipo">
+		    {{ mensagem.texto }}</b-alert>
 		</b-card>
 
        <!--Dados dos notificados-->
@@ -38,16 +42,16 @@
                     
                     <!--informações-->
                     <div class="data-consumer">
-                        <h2> <strong> {{ consumer.id }}  </strong> </h2>
-                        <h6>  <strong> andar: </strong> {{ consumer.andar }}  </h6> 
-                        <h6><strong> cabine: </strong> {{ consumer.cabine }} </h6>
+                        <h1> <strong> {{ consumer.id }}  </strong> </h1>
+                        <h4>  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
+                        <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
                     </div>
 
                     <!--botões-->
-                    <div>
+                    <div class="botoes">
 
-                        <b-button @click="editar(id)" variant="warning"> editar </b-button>
-                        <b-button class="ml-2" @click="excluir(id)" variant="success"> Retornou </b-button>
+                        <b-button @click="editar(chave)" variant="warning"> editar </b-button>
+                        <b-button class="mt-2" @click="excluir(chave)" variant="success"> Retornou </b-button>
 
                     </div>
                 </b-list-group-item>
@@ -63,22 +67,71 @@
 export default {
     data() {
         return {
-            consumers: [{id: 33, andar:12, cabine:2}, {id: 33, andar:12, cabine:2}, {id: 33, andar:12, cabine:2}, {id: 33, andar:12, cabine:2}],
+            mensagens: [],
+            consumers: [],
             consumer: {
-                id: 44,
-                andar: 12,
-                cabine: 2
-            }
+                id: '',
+                andar: '',
+                cabine: ''
+            },
+            chave: null
         }
     },
     methods: {
-        // notificarConsumer() {
-		// 	this.$http.get('usuarios.json').then(res => {
-		// 			this.usuarios = res.data
-				
-		// 	})
+        notificarConsumer() {
+            const metodo = this.chave ? 'patch' : 'post'
+			const finalURL = this.chave ? `/${this.chave}.json` : '.json'
 
-		// }
+			let texto = this.chave ? 'Dados atualizados' : 'Consumidor notificado'
+			
+			this.$http[metodo](`/consumers${finalURL}`, this.consumer).
+				then(() => {
+
+                    this.obterConsumer()
+                    this.limpar()
+
+					this.mensagens.push({
+							texto, tipo: 'success'
+					})
+    
+				})
+            
+        },
+        
+        obterConsumer() {
+            this.$http.get('consumers.json').then(res => {
+                    this.consumers = res.data
+            })
+        },
+        editar(chave) {
+			//o fato de atribuirmos o id passado na função ao this.id, dará a possibildiade de identificarmos se a estamos salvando um novo user ou alterando um que já esta no banco
+			this.chave  = chave
+			this.consumer = {...this.consumers[chave]}
+        },
+        excluir(chave) {
+          this.$http.delete(`consumers/${chave}.json`)
+                .then(() => {
+                    this.limpar()
+                    this.obterConsumer()})
+                .catch(err => this.mensagens.push({
+                    	texto: 'Deu problema',
+                    	tipo: 'danger'
+                    })
+            )
+
+
+            
+        },
+        limpar() {
+            this.consumer.id = '',
+            this.consumer.andar = '',
+            this.consumer.cabine = '',
+            this.chave = null,
+            this.mensagens = []
+        }
+    },
+    created() {
+        this.obterConsumer()
     }
  
 }
@@ -94,29 +147,52 @@ export default {
 
     .new-consumer {
         height: 410px;
+        margin-top: 7px;
     }
 
     .old-consumer {
         display: flex;
         flex-wrap: wrap;
-        background-color: black;
+        align-content: flex-start;
+
         flex-grow: 1;
     }
 
     .old-consumer .each-consumer {
         height: 250px;
         width: 200px;
-  
-    }
-    .old-consumer .data-consumer {
+        background-color: coral;
+        padding: 1%;
         display: flex;
-        flex-wrap: wrap;
-        
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .data-consumer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+
     }
 
-    .old-consumer .data-consumer h2 {
-       width: 100%;
-       
-      
+    .old-consumer .each-consumer .data-consumer h1 {
+        width: 80%;
+        height: 60px;
+        flex-grow: 1;       
+        background-color: white;
+        border-radius: 3px;
+        color: coral;
+
+              
     } 
+
+    .old-consumer .each-consumer .data-consumer h4 {color: white}
+    .botoes {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
 </style>

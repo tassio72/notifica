@@ -5,7 +5,8 @@ import axios from 'axios'
 Vue.use({
     install(Vue) {
         Vue.prototype.$http = axios.create({
-            baseURL: 'https://notifica-38ed3.firebaseio.com/'
+            baseURL: 'https://curso-vue-2393d.firebaseio.com/'
         })
+        
     }
 })
