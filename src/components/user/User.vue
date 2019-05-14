@@ -35,30 +35,32 @@
 		</b-card>
 
        <!--Dados dos notificados-->
+        
 
-        <b-list-group  class="old-consumer" horizontal> 
+            <b-list-group  class="old-consumer" horizontal> 
+                <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
+                    <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
+                        
+                        <!--informações-->
+                        <div class="data-consumer">
+                            <h1> <strong> {{ consumer.id }}  </strong> </h1>
+                            <h4>  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
+                            <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
+                        </div>
 
-                <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
-                    
-                    <!--informações-->
-                    <div class="data-consumer">
-                        <h1> <strong> {{ consumer.id }}  </strong> </h1>
-                        <h4>  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
-                        <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
-                    </div>
+                        <!--botões-->
+                        <div class="botoes">
 
-                    <!--botões-->
-                    <div class="botoes">
+                            <b-button @click="editar(chave)" variant="warning"> editar </b-button>
+                            <b-button class="mt-2" @click="excluir(chave)" variant="success"> Retornou </b-button>
 
-                        <b-button @click="editar(chave)" variant="warning"> editar </b-button>
-                        <b-button class="mt-2" @click="excluir(chave)" variant="success"> Retornou </b-button>
+                        </div>
+                    </b-list-group-item>
 
-                    </div>
-                </b-list-group-item>
+                 </transition-group>  
+            </b-list-group>
 
-
-		</b-list-group>
-            
+         
 
     </div>
 </template>
@@ -195,4 +197,36 @@ export default {
         align-items: center;
         
     }
+
+    /*Transition*/
+
+    @keyframes slide-in {
+        from { transform: translateY(40px);}
+        to { transform: translateY(0);}
+    }
+
+    @keyframes slide-out {
+        from { transform: translateY(0);}
+        to { transform: translateY(40px);}
+    }
+
+    .slide-enter-active {
+        animation: slide-in 2s ease;
+        transition: opacity 2s;
+    }
+    .slide-leave-active {
+        animation: slide-out 2s ease;
+        transition: opacity 2s; 
+        position: absolute;
+        width: 100%;
+    }
+
+    .slide-enter, .slide-leave-to {
+        opacity: 0; /*O elemento começa e termina com opacidade 0*/
+    }
+    
+    .slide-move {
+	transition: transform 1s; 
+    }
+
 </style>
