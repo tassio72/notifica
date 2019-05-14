@@ -21,7 +21,15 @@ export default {
     .menu {
         width: 30%;  
         margin: 10px auto;
-        }
+    }
+    
+    .menu a {
+        text-decoration: none
+    }
+
+    a:hover {
+        color: none;
+    }
 
 
 </style>
