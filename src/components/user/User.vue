@@ -10,14 +10,14 @@
 			</b-form-group>
 
 			<b-form-group label="Andar:">
-				<b-form-input type="text" size='lg'
+				<b-form-input type="number" size='lg'
 					v-model="consumer.andar"
 					placeholder="Qual andar?">
 			    </b-form-input>
             </b-form-group>
             
             <b-form-group label="Cabine:">
-				<b-form-input type="text" size='lg'
+				<b-form-input type="number" size='lg'
 					v-model="consumer.cabine"
 					placeholder="Qual cabine?">
                 </b-form-input>
@@ -37,28 +37,28 @@
        <!--Dados dos notificados-->
         
 
-            <b-list-group  class="old-consumer" horizontal> 
+           
                 <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
                     <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
                         
                         <!--informações-->
                         <div class="data-consumer">
                             <h1> <strong> {{ consumer.id }}  </strong> </h1>
-                            <h4>  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
+                            <h4 class="mt-2">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
                             <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
                         </div>
 
                         <!--botões-->
                         <div class="botoes">
 
-                            <b-button @click="editar(chave)" variant="warning"> editar </b-button>
+                            <b-button @click="editar(chave)" variant="warning"> Editar </b-button>
                             <b-button class="mt-2" @click="excluir(chave)" variant="success"> Retornou </b-button>
 
                         </div>
                     </b-list-group-item>
 
                  </transition-group>  
-            </b-list-group>
+            
 
          
 
@@ -135,6 +135,7 @@ export default {
     created() {
         this.obterConsumer()
     }
+    
  
 }
 </script>
@@ -185,17 +186,23 @@ export default {
         background-color: white;
         border-radius: 3px;
         color: coral;
-
-              
+        font-family: 'Baloo Bhai', cursive;
+        margin: 0%;              
     } 
 
-    .old-consumer .each-consumer .data-consumer h4 {color: white}
+    .old-consumer .each-consumer .data-consumer h4 {
+        color: white;
+        font-family: 'Baloo Bhai', cursive;
+        font-weight: 100;
+    }
+
     .botoes {
         height: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+        font-family: 'Baloo Bhai', cursive;
+       
     }
 
     /*Transition*/
