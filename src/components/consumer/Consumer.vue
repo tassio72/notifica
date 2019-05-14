@@ -2,13 +2,13 @@
     <div class="cards">
 
         <h2>Lista de chamada</h2>
-        <b-article>
+      
             
-                <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
-                    <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
+        <transition-group name="slide" tag="div" class="old-consumer-view" mode="out-in">
+                    <b-list-group-item class="each-consumer-view m-2"  v-for='(consumer, chave) in consumers' :key="chave">
                         
                         <!--informações-->
-                        <div class="data-consumer">
+                        <div class="data-consumer-view">
                             <h1> <strong> {{ consumer.id }}  </strong> </h1>
                             <h4 class="mt-2">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
                             <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
@@ -17,9 +17,9 @@
                     
                     </b-list-group-item>
 
-                 </transition-group>  
+         </transition-group>  
            
-        </b-article>
+       
 
     </div>
 </template>
@@ -67,5 +67,57 @@ export default {
         margin: 0 auto;
         
     }
+
+    .old-consumer-view {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-grow: 1;
+    }
+
+    .old-consumer-view .each-consumer-view {
+        height: 300px;
+        width: 250px;
+        background-color: coral;
+        padding: 1%;
+        border-radius: 8px;
+
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .data-consumer-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+
+    }
+
+     .old-consumer-view .each-consumer-view .data-consumer-view h1 {
+        width: 80%;
+        height: 100px;
+        flex-grow: 1;       
+        background-color: white;
+        border-radius: 50%;
+        color: coral;
+        font-family: 'Baloo Bhai', cursive;
+        font-size: 5rem;
+        margin: 0%;           
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    } 
+
+    .old-consumer-view .each-consumer-view .data-consumer-view h4 {
+        color: white;
+        font-family: 'Baloo Bhai', cursive;
+        font-weight: 100;
+    }
+    
 
 </style>
