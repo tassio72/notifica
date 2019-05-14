@@ -1,7 +1,7 @@
 <template>
     <div class="cards">
 
-        <h2>Lista de chamada</h2>
+        <h1>Lista de chamada</h1>
       
             
         <transition-group name="slide" tag="div" class="old-consumer-view" mode="out-in">
@@ -10,7 +10,7 @@
                         <!--informações-->
                         <div class="data-consumer-view">
                             <h1> <strong> {{ consumer.id }}  </strong> </h1>
-                            <h4 class="mt-2">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
+                            <h4 class="mt-5">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
                             <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
                         </div>
 
@@ -68,6 +68,8 @@ export default {
         
     }
 
+    
+
     .old-consumer-view {
         display: flex;
         flex-wrap: wrap;
@@ -115,8 +117,9 @@ export default {
 
     .old-consumer-view .each-consumer-view .data-consumer-view h4 {
         color: white;
-        font-family: 'Baloo Bhai', cursive;
-        font-weight: 100;
+        font-family: 'Arial Narrow Bold', sans-serif;
+        font-size: 2.3rem;
+        
     }
     
 
