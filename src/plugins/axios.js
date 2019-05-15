@@ -8,12 +8,12 @@ Vue.use({
             baseURL: 'https://curso-vue-2393d.firebaseio.com/'
         })
 
-        Vue.prototype.$http.interceptors.request.use(request => {
-            //Podemos, por exemplo, descobrir qual métodos axios está sendo usado, quando este for chamado
-            console.log(request.method)
-            return request
+        // Vue.prototype.$http.interceptors.request.use(request => {
+        //     //Podemos, por exemplo, descobrir qual métodos axios está sendo usado, quando este for chamado
+        //     console.log(request.method)
+        //     return request
 
-        }, error => Promise.reject(error))
+        // }, error => Promise.reject(error))
         
     }
 })

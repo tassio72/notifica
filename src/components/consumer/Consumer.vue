@@ -10,14 +10,22 @@
                         <!--informações-->
                         <div class="data-consumer-view">
                             <h1> <strong> {{ consumer.id }}  </strong> </h1>
-                            <h4 class="mt-5">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
-                            <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
+                            <div class="bottom-card mt-5">
+                                <h4 >  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
+                                <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
+
+                            </div>
                         </div>
 
                     
                     </b-list-group-item>
 
          </transition-group>  
+
+        <audio id="myAudio"> 
+            <source src="@/music/iPhoneSMS.mp3" type="audio/mp3">
+         </audio>
+  
            
        
 
@@ -42,15 +50,26 @@ export default {
          obterConsumer() {
             this.$http.get('consumers.json').then(res => {
                     this.consumers = res.data
+                    
             })
         },
+        play(){
+            const playAudio = document.getElementById("myAudio");
+            playAudio.play(); 
+        }
     },
     created() {
         this.obterConsumer()
     },
     mounted() {
+        
         setInterval(() => {
             this.obterConsumer()
+
+            // if (Object.keys(this.consumers).length > 0) {
+                
+            //      this.play() 
+            // }
             
         }, 5000);
     }
@@ -80,7 +99,7 @@ export default {
     .old-consumer-view .each-consumer-view {
         height: 300px;
         width: 250px;
-        background-color: coral;
+        background-color: rgba(255, 236, 236, 0.959);
         padding: 1%;
         border-radius: 8px;
 
@@ -102,9 +121,9 @@ export default {
         width: 80%;
         height: 100px;
         flex-grow: 1;       
-        background-color: white;
+        background-color: coral;
         border-radius: 50%;
-        color: coral;
+        color: white;
         font-family: 'Baloo Bhai', cursive;
         font-size: 5rem;
         margin: 0%;           
@@ -119,6 +138,14 @@ export default {
         color: white;
         font-family: 'Arial Narrow Bold', sans-serif;
         font-size: 2.3rem;
+        
+    }
+
+    .bottom-card {
+        background-color: coral;
+        width: 240px;
+        height: 130px;
+        padding-top: 20px;
         
     }
     

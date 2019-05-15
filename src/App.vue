@@ -4,7 +4,6 @@
     <router-view/>
     
     
-    
   </div>
 </template>
 
@@ -16,7 +15,8 @@ import Consumer from './components/consumer/Consumer.vue'
 export default {
   components: {
     Menu
-  }
+  },
+  
  
 }
 </script>
