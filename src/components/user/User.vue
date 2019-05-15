@@ -1,5 +1,6 @@
 <template>
     <div class="dashboard">
+        
         <b-card class="new-consumer">
 
 			<b-form-group label="ID:">
@@ -22,23 +23,26 @@
 					placeholder="Qual cabine?">
                 </b-form-input>
             </b-form-group>
-         
+
 
 			<hr>
 
 			<b-button @click="notificarConsumer" variant="primary" class="mt-3" > Notificar! </b-button>
-			
+
+            
             <b-alert show dismissible v-for="mensagem in mensagens"
                 :key='mensagem.texto'
                 :variant="mensagem.tipo">
 		    {{ mensagem.texto }}</b-alert>
+			
+            
 		</b-card>
 
        <!--Dados dos notificados-->
         
 
            
-                <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
+        <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
                     <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
                         
                         <!--informações-->
@@ -57,7 +61,9 @@
                         </div>
                     </b-list-group-item>
 
-                 </transition-group>  
+       
+        </transition-group>  
+
             
 
          
@@ -142,7 +148,7 @@ export default {
 
 <style>
     .dashboard {
-        width: 95%;
+        width: 98%;
         height: 700px;
         margin: 0 auto;
         display: flex;
@@ -150,7 +156,9 @@ export default {
 
     .new-consumer {
         height: 410px;
+        width: 220px;
         margin-top: 7px;
+       
     }
 
     .old-consumer {
@@ -158,7 +166,7 @@ export default {
         flex-wrap: wrap;
         align-content: flex-start;
 
-        flex-grow: 1;
+        width: 90%;
     }
 
     .old-consumer .each-consumer {

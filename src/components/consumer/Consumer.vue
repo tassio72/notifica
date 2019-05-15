@@ -82,7 +82,7 @@ export default {
 <style>
 
     .cards {
-        width: 95%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -101,7 +101,7 @@ export default {
 
     .old-consumer-view .each-consumer-view {
         height: 300px;
-        width: 250px;
+        width: 230px;
         background-color: rgba(255, 236, 236, 0.959);
         padding: 1%;
         border-radius: 8px;
@@ -146,7 +146,7 @@ export default {
 
     .bottom-card {
         background-color: coral;
-        width: 240px;
+        width: 230px;
         height: 130px;
         padding-top: 20px;
         
