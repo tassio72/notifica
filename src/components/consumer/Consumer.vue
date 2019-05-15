@@ -47,10 +47,10 @@ export default {
         }
     },
     methods: {
-         obterConsumer() {
+         obterConsumer(consumer) {
             this.$http.get('consumers.json').then(res => {
                     this.consumers = res.data
-                    
+                    consumer ? this.play() : !this.play //só toca se tiver algo no banco
             })
         },
         play(){
@@ -59,17 +59,14 @@ export default {
         }
     },
     created() {
-        this.obterConsumer()
+        this.obterConsumer(false)
     },
     mounted() {
         
         setInterval(() => {
-            this.obterConsumer()
-
-            // if (Object.keys(this.consumers).length > 0) {
-                
-            //      this.play() 
-            // }
+            let consumer = ''
+            this.consumers ? consumer = true : consumer = false
+            this.obterConsumer(consumer)
             
         }, 5000);
     }
