@@ -2,10 +2,10 @@
     <nav class="menu">
         <ul>
             <router-link to='/consumer' tag='li' active-class='active'>
-                <a>Consumidor</a>
+                <a> <h3> Consumidor </h3> </a>
             </router-link>
             <router-link to='/user' tag='li' active-class='active'>
-                <a> Usuário</a>    
+                <a> <h3> Usuário </h3></a>    
             </router-link>
 
         </ul>
@@ -19,12 +19,21 @@ export default {
 
 <style scoped>
     .menu {
-        width: 30%;  
+        width: 25%;  
         margin: 10px auto;
+        padding: 0%;
+    }
+
+    .menu ul {
+        height: 65px;
+    }
+    .menu ul li {
+        width: 50%;
     }
     
     .menu a {
-        text-decoration: none
+        text-decoration: none;
+        margin: 0%;
     }
 
     a:hover {

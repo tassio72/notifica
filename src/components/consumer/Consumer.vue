@@ -47,28 +47,34 @@ export default {
         }
     },
     methods: {
-         obterConsumer(consumer) {
+         obterConsumer() {
             this.$http.get('consumers.json').then(res => {
                     this.consumers = res.data
-                    consumer ? this.play() : !this.play //só toca se tiver algo no banco
+                    this.validaArrayConsumers() //só toca se tiver algo no banco
             })
         },
         play(){
             const playAudio = document.getElementById("myAudio");
             playAudio.play(); 
+        },
+        validaArrayConsumers() {
+            let consumer = ''
+            this.consumers ? consumer = true : consumer = false
+            consumer ? this.play() : !this.play //só toca se tiver algo no banco
+            
         }
     },
     created() {
-        this.obterConsumer(false)
+        this.obterConsumer()
+        
     },
     mounted() {
         
         setInterval(() => {
-            let consumer = ''
-            this.consumers ? consumer = true : consumer = false
-            this.obterConsumer(consumer)
             
-        }, 5000);
+            this.obterConsumer()
+            
+        }, 10000);
     }
 }
 </script>
