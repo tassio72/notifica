@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Menu/>  
+    
+    
+    <router-view name="menu"/> 
     <router-view/>
     
     
@@ -9,13 +11,11 @@
 
 <script>
 
-import Menu from './components/Menu.vue'
+
 import Consumer from './components/consumer/Consumer.vue'
 
 export default {
-  components: {
-    Menu
-  },
+ 
   
  
 }

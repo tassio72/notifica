@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard">
-        
+     
         <b-card class="new-consumer">
 
 			<b-form-group label="ID:">
@@ -136,7 +136,8 @@ export default {
             this.consumer.cabine = '',
             this.chave = null,
             this.mensagens = []
-        }
+        },
+        
     },
     created() {
         this.obterConsumer()

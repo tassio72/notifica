@@ -1,7 +1,7 @@
 <template>
     <div class="cards">
 
-        <h1>Lista de chamada</h1>
+      <a class="volta" sucesso @click="irParaInicio"> <strong> Voltar </strong></a>
       
             
         <transition-group name="slide" tag="div" class="old-consumer-view" mode="out-in">
@@ -62,6 +62,14 @@ export default {
             this.consumers ? consumer = true : consumer = false
             consumer ? this.play() : !this.play //só toca se tiver algo no banco
             
+        },
+
+        irParaInicio() {
+            //usando $router.push para alterar de componentes. 
+
+            //this.$router.push('/')  // para fins didáditos
+            // this.$router.push( { path:'/'})
+            this.$router.push( { name: 'inicio'})
         }
     },
     created() {
@@ -90,6 +98,10 @@ export default {
         
     }
 
+    .volta {
+        width: 50px;
+        cursor: pointer;
+    }
     
 
     .old-consumer-view {
@@ -151,6 +163,8 @@ export default {
         padding-top: 20px;
         
     }
+
+    
     
 
 </style>
