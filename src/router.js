@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Consumer from './components/consumer/Consumer' //importando os componentes que serão usados na rotas
 import User from './components/user/User' //importando os componentes que serão usados na rotas
-import App from './App.vue'
+import Instrucao from './components/Instrucao'
 import Menu from './components/Menu'
 
 
@@ -14,7 +14,7 @@ export default new Router ({
         name: 'inicio',
         path: '/', //definindo o caminho da rota
             components: {
-                default: App, //identificando o componente da rota,
+                default: Instrucao, //identificando o componente da rota,
                 menu: Menu
             }
         },
