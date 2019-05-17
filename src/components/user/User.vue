@@ -43,11 +43,11 @@
 
            
         <transition-group name="slide" tag="div" class="old-consumer" mode="out-in">
-                    <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave">
+                    <b-list-group-item class="each-consumer m-2"  v-for='(consumer, chave) in consumers' :key="chave" :class= "consumer.andar == 1 ? cor1 : cor2">
                         
                         <!--informações-->
                         <div class="data-consumer">
-                            <h1> <strong> {{ consumer.id }}  </strong> </h1>
+                            <h1 :class= "consumer.andar == 1 ? cor3 : cor4"> <strong> {{ consumer.id }}  </strong> </h1>
                             <h4 class="mt-2">  <strong> Andar: </strong> {{ consumer.andar }}  </h4> 
                             <h4><strong> Cabine: </strong> {{ consumer.cabine }} </h4>
                         </div>
@@ -82,7 +82,12 @@ export default {
                 andar: '',
                 cabine: ''
             },
-            chave: null
+            chave: null,
+            cor1:'c1',
+            cor2: 'c2',
+            cor3: 'c3',
+            cor4: 'c4'
+            
         }
     },
     methods: {
@@ -155,6 +160,12 @@ export default {
         display: flex;
     }
 
+    /*Cores definidas a partir do andar*/
+    .c1 {background-color: coral !important;}
+    .c2 {background-color: rgb(121, 218, 121) !important;}
+    .c3 {color:  coral }
+    .c4 {color:  rgb(121, 218, 121)}
+
     .new-consumer {
         height: 410px;
         width: 220px;
@@ -173,7 +184,7 @@ export default {
     .old-consumer .each-consumer {
         height: 250px;
         width: 200px;
-        background-color: coral;
+        /* background-color: coral ; */
         padding: 1%;
         display: flex;
         flex-direction: column;
@@ -193,8 +204,8 @@ export default {
         height: 60px;
         flex-grow: 1;       
         background-color: white;
-        border-radius: 3px;
-        color: coral;
+        border-radius: 50%;
+        /* color: coral; */
         font-family: 'Baloo Bhai', cursive;
         margin: 0%;              
     } 

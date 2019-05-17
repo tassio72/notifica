@@ -5,7 +5,7 @@
       
             
         <transition-group name="slide" tag="div" class="old-consumer-view" mode="out-in">
-                    <b-list-group-item class="each-consumer-view m-2"  v-for='(consumer, chave) in consumers' :key="chave">
+                    <b-list-group-item class="each-consumer-view m-2"  v-for='(consumer, chave) in consumers' :key= "chave">
                         
                         <!--informações-->
                         <div class="data-consumer-view">
