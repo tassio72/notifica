@@ -4,7 +4,7 @@
             <router-link to='/consumer' tag='li' active-class='active'>
                 <a> <h3> Consumidor </h3> </a>
             </router-link>
-            <hr>
+           
             <router-link to='/user' tag='li' active-class='active'>
                 <a> <h3> Usuário </h3></a>    
             </router-link>
@@ -20,13 +20,9 @@ export default {
 </script>
 
 <style scoped>
-    hr {
-        width: 2px;
-        height: 50%;
-        background: white;
-    }
+  
     .menu {
-        width: 25%;  
+        width: 30%;  
         margin: 10px auto;
         padding: 0%;
     }

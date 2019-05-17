@@ -27,7 +27,7 @@
 
 			<hr>
 
-			<b-button @click="notificarConsumer" variant="primary" class="mt-3" > Notificar! </b-button>
+			<b-button @click="notificarConsumer(consumer.id)" variant="primary" class="mt-3" > Notificar! </b-button>
 
             
             <b-alert show dismissible v-for="mensagem in mensagens"
@@ -91,7 +91,34 @@ export default {
         }
     },
     methods: {
-        notificarConsumer() {
+        notificarConsumer(id) {
+            let arr = {...this.consumers}
+
+            // Object.keys(arr).forEach(function(key) {
+            //     console.log(key + ': ' + arr[key].id);
+            // });
+                        
+            arr = Object.keys(arr).filter(function(key) {
+                // Countries under 1000000000
+                // console.log(arr[key].id == id)
+                return arr[key].id == id;
+
+
+
+            });
+
+
+            if (arr.length > 0) {
+                        this.limpar()
+    
+                        this.mensagens.push({
+                                    texto: 'Esse ID já foi notificado', tipo: 'danger'
+                        })
+                        
+                        return
+            } 
+
+
             const metodo = this.chave ? 'patch' : 'post'
 			const finalURL = this.chave ? `/${this.chave}.json` : '.json'
 

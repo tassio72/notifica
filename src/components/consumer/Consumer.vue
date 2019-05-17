@@ -60,7 +60,7 @@ export default {
         validaArrayConsumers() {
             let consumer = ''
             this.consumers ? consumer = true : consumer = false
-            consumer ? this.play() : !this.play //só toca se tiver algo no banco
+            consumer ? this.play() : !this.play() //só toca se tiver algo no banco
             
         },
 
