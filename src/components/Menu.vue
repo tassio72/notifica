@@ -1,12 +1,12 @@
 <template>
     <nav class="menu">
         <ul>
-            <router-link to='/consumer' tag='li' active-class='active'>
-                <a> <h3> Consumidor </h3> </a>
+            <router-link to='/consumer' tag='li' >
+                <a> <i class="fas fa-desktop icons"></i> </a>
             </router-link>
            
             <router-link to='/user' tag='li' active-class='active'>
-                <a> <h3> Usuário </h3></a>    
+                <a active-class='active'> <i class="fas fa-user icons"></i></a>    
             </router-link>
             
         </ul>
@@ -21,27 +21,36 @@ export default {
 
 <style scoped>
   
-    .menu {
-        width: 30%;  
-        margin: 10px auto;
-        padding: 0%;
-    }
+   
 
-    .menu ul {
+    /* .menu ul {
         height: 65px;
-    }
-    .menu ul li {
+        min-width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    } */
+    /* .menu ul li {
         width: 50%;
-    }
-    
+        background-color: none;
+        
+    } */
+
+    /* .icons {
+       font-size: 30px;
+    } */
+/*     
     .menu a {
         text-decoration: none;
         margin: 0%;
-    }
+        padding: 0%;
+        
+    } */
 
-    a:hover {
+    /* a:hover {
         color: none;
-    }
+    } */
 
 
 </style>

@@ -13,32 +13,56 @@ h1, h2, h3 {
     color: white;
 }
 
+.menu {
+    width: 30%; 
+
+    margin: 10px auto;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+}
+
 .menu ul {
     display: flex;    
-    background-color: #777;
+    /* background-color: #777; */
     list-style: none;
     padding: 0;
     border-radius: 50px;
     overflow: hidden;
+    height: 65px;
+    min-width: 100px;
+    justify-content: center;
+    align-items: center;
+        
 }
 
 .menu li {
     flex: 1;
+    width: 50%;
+    background-color: none;
 }
 
 
 .menu a {
     display: flex;
     justify-content: center;
-    padding: 15px 40px;
+    /* padding: 15px 40px; */
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
+    text-decoration: none;
+    margin: 0%;
+    padding: 0%;
 }
 
-.menu .active {
-    background-color: #2392f0;
+.menu ul .active a i {
+    color: #86f023;
+    cursor: pointer;
 }
+
+.icons {
+    font-size: 30px;
+ }
 
 .menu .active a {
     color: #FFF;
@@ -46,6 +70,11 @@ h1, h2, h3 {
 
 .menu a {
     color: #FFF;
+}
+
+
+a:hover {
+    color: none;
 }
 
 button {
